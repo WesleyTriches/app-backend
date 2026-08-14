@@ -5,6 +5,17 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "Mateus da Silva",
-    "email": "Mateus@upf.br"
+    "name": "",
+    "email": ""
 }
+
+### 
+PUT http://localhost:3000/api/users/1
+Content-Type: application/json
+
+{
+    "name": "teste alteracao"
+}
+
+###
+DELETE http://localhost:3000/api/users/2
