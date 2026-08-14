@@ -1,4 +1,8 @@
+import { IsNotEmpty, Length } from "class-validator";
 export class CreateUserDTO {
-    name : string = '';
-    email : string = '';
+    @IsNotEmpty()
+    @Length(3, 100)
+    name: string = '';
+    @IsNotEmpty()
+    email: string = '';
 }
