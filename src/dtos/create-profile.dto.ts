@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsOptional, IsString, IsDateString, IsUrl } from 'class-validator';
+import { IsInt, IsNotEmpty, IsOptional, IsString, IsDateString, IsUrl, IsPositive } from 'class-validator';
 
 export class CreateProfileDto {
   @IsInt()
@@ -15,4 +15,9 @@ export class CreateProfileDto {
   @IsOptional()
   @IsUrl()
   avatarUrl?: string;
+
+  @IsOptional()
+  @IsInt()
+  @IsPositive()
+  planId?: number;
 }

@@ -1,0 +1,16 @@
+GET http://localhost:3000/api/users
+
+###
+
+POST http://localhost:3000/api/profiles
+Content-Type: application/json
+
+{
+  "userId": 4,
+  "fullName": "teste",
+  "birthDate": "1990-01-15T00:00:00Z"
+}
+
+###
+
+GET http://localhost:3000/api/profiles/4

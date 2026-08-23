@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsNotEmpty, IsDateString, IsUrl } from 'class-validator';
+import { IsOptional, IsString, IsNotEmpty, IsDateString, IsUrl, IsInt, IsPositive} from 'class-validator';
 
 export class UpdateProfileDto {
   @IsOptional()
@@ -13,4 +13,9 @@ export class UpdateProfileDto {
   @IsOptional()
   @IsUrl()
   avatarUrl?: string;
+
+  @IsOptional()
+  @IsInt()
+  @IsPositive()
+  planId?: number;
 }
