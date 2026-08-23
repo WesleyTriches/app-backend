@@ -1,0 +1,34 @@
+POST http://localhost:3000/api/plans
+Content-Type: application/json
+
+{
+    "name": "Básico",
+    "price": 29.90
+}
+
+###
+POST http://localhost:3000/api/plans
+Content-Type: application/json
+
+{
+    "name": "Pro",
+    "price": 59.90
+}
+
+###
+GET http://localhost:3000/api/plans
+
+###
+GET http://localhost:3000/api/plans/1
+
+###
+PUT http://localhost:3000/api/plans/1
+Content-Type: application/json
+
+{
+    "name": "Básico Plus",
+    "price": 34.90
+}
+
+###
+DELETE http://localhost:3000/api/plans/2

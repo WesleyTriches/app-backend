@@ -10,7 +10,7 @@ export class ProfilesService {
   async create(dto: CreateProfileDto) {
     const user = await this.prisma.user.findUnique({ where: { id: dto.userId } });
     if (!user) {
-      throw new BadRequestException(`Usuário com id ${dto.userId} não existe.`);
+      throw new BadRequestException('Usuário não existe.');
     }
 
     const existingProfile = await this.prisma.profile.findUnique({

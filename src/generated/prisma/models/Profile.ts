@@ -29,11 +29,13 @@ export type AggregateProfile = {
 export type ProfileAvgAggregateOutputType = {
   id: number | null
   userId: number | null
+  planId: number | null
 }
 
 export type ProfileSumAggregateOutputType = {
   id: number | null
   userId: number | null
+  planId: number | null
 }
 
 export type ProfileMinAggregateOutputType = {
@@ -44,6 +46,7 @@ export type ProfileMinAggregateOutputType = {
   avatarUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  planId: number | null
 }
 
 export type ProfileMaxAggregateOutputType = {
@@ -54,6 +57,7 @@ export type ProfileMaxAggregateOutputType = {
   avatarUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  planId: number | null
 }
 
 export type ProfileCountAggregateOutputType = {
@@ -64,6 +68,7 @@ export type ProfileCountAggregateOutputType = {
   avatarUrl: number
   createdAt: number
   updatedAt: number
+  planId: number
   _all: number
 }
 
@@ -71,11 +76,13 @@ export type ProfileCountAggregateOutputType = {
 export type ProfileAvgAggregateInputType = {
   id?: true
   userId?: true
+  planId?: true
 }
 
 export type ProfileSumAggregateInputType = {
   id?: true
   userId?: true
+  planId?: true
 }
 
 export type ProfileMinAggregateInputType = {
@@ -86,6 +93,7 @@ export type ProfileMinAggregateInputType = {
   avatarUrl?: true
   createdAt?: true
   updatedAt?: true
+  planId?: true
 }
 
 export type ProfileMaxAggregateInputType = {
@@ -96,6 +104,7 @@ export type ProfileMaxAggregateInputType = {
   avatarUrl?: true
   createdAt?: true
   updatedAt?: true
+  planId?: true
 }
 
 export type ProfileCountAggregateInputType = {
@@ -106,6 +115,7 @@ export type ProfileCountAggregateInputType = {
   avatarUrl?: true
   createdAt?: true
   updatedAt?: true
+  planId?: true
   _all?: true
 }
 
@@ -203,6 +213,7 @@ export type ProfileGroupByOutputType = {
   avatarUrl: string | null
   createdAt: Date
   updatedAt: Date
+  planId: number | null
   _count: ProfileCountAggregateOutputType | null
   _avg: ProfileAvgAggregateOutputType | null
   _sum: ProfileSumAggregateOutputType | null
@@ -236,7 +247,9 @@ export type ProfileWhereInput = {
   avatarUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
+  planId?: Prisma.IntNullableFilter<"Profile"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  plan?: Prisma.XOR<Prisma.PlanNullableScalarRelationFilter, Prisma.PlanWhereInput> | null
 }
 
 export type ProfileOrderByWithRelationInput = {
@@ -247,7 +260,9 @@ export type ProfileOrderByWithRelationInput = {
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  planId?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  plan?: Prisma.PlanOrderByWithRelationInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -261,7 +276,9 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   avatarUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
+  planId?: Prisma.IntNullableFilter<"Profile"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  plan?: Prisma.XOR<Prisma.PlanNullableScalarRelationFilter, Prisma.PlanWhereInput> | null
 }, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
@@ -272,6 +289,7 @@ export type ProfileOrderByWithAggregationInput = {
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  planId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ProfileCountOrderByAggregateInput
   _avg?: Prisma.ProfileAvgOrderByAggregateInput
   _max?: Prisma.ProfileMaxOrderByAggregateInput
@@ -290,6 +308,7 @@ export type ProfileScalarWhereWithAggregatesInput = {
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
+  planId?: Prisma.IntNullableWithAggregatesFilter<"Profile"> | number | null
 }
 
 export type ProfileCreateInput = {
@@ -299,6 +318,7 @@ export type ProfileCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutProfileInput
+  plan?: Prisma.PlanCreateNestedOneWithoutProfilesInput
 }
 
 export type ProfileUncheckedCreateInput = {
@@ -309,6 +329,7 @@ export type ProfileUncheckedCreateInput = {
   avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  planId?: number | null
 }
 
 export type ProfileUpdateInput = {
@@ -318,6 +339,7 @@ export type ProfileUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+  plan?: Prisma.PlanUpdateOneWithoutProfilesNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
@@ -328,6 +350,7 @@ export type ProfileUncheckedUpdateInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  planId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type ProfileCreateManyInput = {
@@ -338,6 +361,7 @@ export type ProfileCreateManyInput = {
   avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  planId?: number | null
 }
 
 export type ProfileUpdateManyMutationInput = {
@@ -356,6 +380,7 @@ export type ProfileUncheckedUpdateManyInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  planId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type ProfileNullableScalarRelationFilter = {
@@ -371,11 +396,13 @@ export type ProfileCountOrderByAggregateInput = {
   avatarUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  planId?: Prisma.SortOrder
 }
 
 export type ProfileAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  planId?: Prisma.SortOrder
 }
 
 export type ProfileMaxOrderByAggregateInput = {
@@ -386,6 +413,7 @@ export type ProfileMaxOrderByAggregateInput = {
   avatarUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  planId?: Prisma.SortOrder
 }
 
 export type ProfileMinOrderByAggregateInput = {
@@ -396,11 +424,23 @@ export type ProfileMinOrderByAggregateInput = {
   avatarUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  planId?: Prisma.SortOrder
 }
 
 export type ProfileSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  planId?: Prisma.SortOrder
+}
+
+export type ProfileListRelationFilter = {
+  every?: Prisma.ProfileWhereInput
+  some?: Prisma.ProfileWhereInput
+  none?: Prisma.ProfileWhereInput
+}
+
+export type ProfileOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ProfileCreateNestedOneWithoutUserInput = {
@@ -443,12 +483,63 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type ProfileCreateNestedManyWithoutPlanInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPlanInput, Prisma.ProfileUncheckedCreateWithoutPlanInput> | Prisma.ProfileCreateWithoutPlanInput[] | Prisma.ProfileUncheckedCreateWithoutPlanInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPlanInput | Prisma.ProfileCreateOrConnectWithoutPlanInput[]
+  createMany?: Prisma.ProfileCreateManyPlanInputEnvelope
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+}
+
+export type ProfileUncheckedCreateNestedManyWithoutPlanInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPlanInput, Prisma.ProfileUncheckedCreateWithoutPlanInput> | Prisma.ProfileCreateWithoutPlanInput[] | Prisma.ProfileUncheckedCreateWithoutPlanInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPlanInput | Prisma.ProfileCreateOrConnectWithoutPlanInput[]
+  createMany?: Prisma.ProfileCreateManyPlanInputEnvelope
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+}
+
+export type ProfileUpdateManyWithoutPlanNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPlanInput, Prisma.ProfileUncheckedCreateWithoutPlanInput> | Prisma.ProfileCreateWithoutPlanInput[] | Prisma.ProfileUncheckedCreateWithoutPlanInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPlanInput | Prisma.ProfileCreateOrConnectWithoutPlanInput[]
+  upsert?: Prisma.ProfileUpsertWithWhereUniqueWithoutPlanInput | Prisma.ProfileUpsertWithWhereUniqueWithoutPlanInput[]
+  createMany?: Prisma.ProfileCreateManyPlanInputEnvelope
+  set?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  disconnect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  delete?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  update?: Prisma.ProfileUpdateWithWhereUniqueWithoutPlanInput | Prisma.ProfileUpdateWithWhereUniqueWithoutPlanInput[]
+  updateMany?: Prisma.ProfileUpdateManyWithWhereWithoutPlanInput | Prisma.ProfileUpdateManyWithWhereWithoutPlanInput[]
+  deleteMany?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
+}
+
+export type ProfileUncheckedUpdateManyWithoutPlanNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPlanInput, Prisma.ProfileUncheckedCreateWithoutPlanInput> | Prisma.ProfileCreateWithoutPlanInput[] | Prisma.ProfileUncheckedCreateWithoutPlanInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPlanInput | Prisma.ProfileCreateOrConnectWithoutPlanInput[]
+  upsert?: Prisma.ProfileUpsertWithWhereUniqueWithoutPlanInput | Prisma.ProfileUpsertWithWhereUniqueWithoutPlanInput[]
+  createMany?: Prisma.ProfileCreateManyPlanInputEnvelope
+  set?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  disconnect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  delete?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  update?: Prisma.ProfileUpdateWithWhereUniqueWithoutPlanInput | Prisma.ProfileUpdateWithWhereUniqueWithoutPlanInput[]
+  updateMany?: Prisma.ProfileUpdateManyWithWhereWithoutPlanInput | Prisma.ProfileUpdateManyWithWhereWithoutPlanInput[]
+  deleteMany?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
+}
+
 export type ProfileCreateWithoutUserInput = {
   fullName: string
   birthDate?: Date | string | null
   avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  plan?: Prisma.PlanCreateNestedOneWithoutProfilesInput
 }
 
 export type ProfileUncheckedCreateWithoutUserInput = {
@@ -458,6 +549,7 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  planId?: number | null
 }
 
 export type ProfileCreateOrConnectWithoutUserInput = {
@@ -482,10 +574,109 @@ export type ProfileUpdateWithoutUserInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  plan?: Prisma.PlanUpdateOneWithoutProfilesNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  planId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+}
+
+export type ProfileCreateWithoutPlanInput = {
+  fullName: string
+  birthDate?: Date | string | null
+  avatarUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutPlanInput = {
+  id?: number
+  userId: number
+  fullName: string
+  birthDate?: Date | string | null
+  avatarUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ProfileCreateOrConnectWithoutPlanInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutPlanInput, Prisma.ProfileUncheckedCreateWithoutPlanInput>
+}
+
+export type ProfileCreateManyPlanInputEnvelope = {
+  data: Prisma.ProfileCreateManyPlanInput | Prisma.ProfileCreateManyPlanInput[]
+}
+
+export type ProfileUpsertWithWhereUniqueWithoutPlanInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutPlanInput, Prisma.ProfileUncheckedUpdateWithoutPlanInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutPlanInput, Prisma.ProfileUncheckedCreateWithoutPlanInput>
+}
+
+export type ProfileUpdateWithWhereUniqueWithoutPlanInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutPlanInput, Prisma.ProfileUncheckedUpdateWithoutPlanInput>
+}
+
+export type ProfileUpdateManyWithWhereWithoutPlanInput = {
+  where: Prisma.ProfileScalarWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateManyMutationInput, Prisma.ProfileUncheckedUpdateManyWithoutPlanInput>
+}
+
+export type ProfileScalarWhereInput = {
+  AND?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
+  OR?: Prisma.ProfileScalarWhereInput[]
+  NOT?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
+  id?: Prisma.IntFilter<"Profile"> | number
+  userId?: Prisma.IntFilter<"Profile"> | number
+  fullName?: Prisma.StringFilter<"Profile"> | string
+  birthDate?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
+  avatarUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
+  planId?: Prisma.IntNullableFilter<"Profile"> | number | null
+}
+
+export type ProfileCreateManyPlanInput = {
+  id?: number
+  userId: number
+  fullName: string
+  birthDate?: Date | string | null
+  avatarUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ProfileUpdateWithoutPlanInput = {
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutPlanInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ProfileUncheckedUpdateManyWithoutPlanInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -503,7 +694,9 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   avatarUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  planId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  plan?: boolean | Prisma.Profile$planArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
 export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -514,7 +707,9 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   avatarUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  planId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  plan?: boolean | Prisma.Profile$planArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
 export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -525,7 +720,9 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   avatarUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  planId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  plan?: boolean | Prisma.Profile$planArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
 export type ProfileSelectScalar = {
@@ -536,23 +733,28 @@ export type ProfileSelectScalar = {
   avatarUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  planId?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "birthDate" | "avatarUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "birthDate" | "avatarUrl" | "createdAt" | "updatedAt" | "planId", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  plan?: boolean | Prisma.Profile$planArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  plan?: boolean | Prisma.Profile$planArgs<ExtArgs>
 }
 export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  plan?: boolean | Prisma.Profile$planArgs<ExtArgs>
 }
 
 export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Profile"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    plan: Prisma.$PlanPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -562,6 +764,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     avatarUrl: string | null
     createdAt: Date
     updatedAt: Date
+    planId: number | null
   }, ExtArgs["result"]["profile"]>
   composites: {}
 }
@@ -957,6 +1160,7 @@ readonly fields: ProfileFieldRefs;
 export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  plan<T extends Prisma.Profile$planArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$planArgs<ExtArgs>>): Prisma.Prisma__PlanClient<runtime.Types.Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -993,6 +1197,7 @@ export interface ProfileFieldRefs {
   readonly avatarUrl: Prisma.FieldRef<"Profile", 'String'>
   readonly createdAt: Prisma.FieldRef<"Profile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Profile", 'DateTime'>
+  readonly planId: Prisma.FieldRef<"Profile", 'Int'>
 }
     
 
@@ -1389,6 +1594,25 @@ export type ProfileDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Profiles to delete.
    */
   limit?: number
+}
+
+/**
+ * Profile.plan
+ */
+export type Profile$planArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Plan
+   */
+  select?: Prisma.PlanSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Plan
+   */
+  omit?: Prisma.PlanOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PlanInclude<ExtArgs> | null
+  where?: Prisma.PlanWhereInput
 }
 
 /**
