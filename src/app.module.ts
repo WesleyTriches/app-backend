@@ -1,19 +1,16 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { ProfilesModule } from './profiles/profiles.module';
-import { PlansModule } from './plan/plans.module';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
+    //adicionado aqui global o configModule
+    ConfigModule.forRoot({ isGlobal: true }),
+    AuthModule,
     UsersModule,
     ProfilesModule,
-    PlansModule,
   ],
-  controllers: [],
-  providers: [],
 })
-export class AppModule {}
+export class AppModule { }

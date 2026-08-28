@@ -19,7 +19,8 @@ model User {
   email     String   @unique
   createdAt DateTime @default(now())
 
-  profile Profile?
+  profile      Profile?
+  passwordHash String   @default("$2b$10$21V92Zk9GwSDXAdgqRr/oul1AN7/roDDo.q/eqCW35OdH1wUQDg9O")
 }
 
 model Profile {
