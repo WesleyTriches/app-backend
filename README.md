@@ -2,25 +2,19 @@
 
 API REST desenvolvida com **NestJS**, **TypeScript**, **Prisma ORM** e **SQLite**.
 
-## Como usar
-
-Clone o repositório:
+## Como executar
 
 ```bash
 git clone https://github.com/WesleyTriches/app-backend.git
 cd app-backend
-```
-
-Instale as dependências:
-
-```bash
 npm install
 ```
 
-Crie um arquivo `.env` na raiz:
+Crie o arquivo `.env`:
 
 ```env
 DATABASE_URL="file:./dev.db"
+JWT_SECRET="sua_chave_secreta"
 ```
 
 Configure o banco:
@@ -30,7 +24,7 @@ npx prisma migrate dev
 npx prisma generate
 ```
 
-Inicie o projeto:
+Inicie a aplicação:
 
 ```bash
 npm run start:dev
@@ -44,21 +38,39 @@ http://localhost:3000/api
 
 ## Rotas
 
-```text
-/api/users
-/api/profiles
-/api/plans
+### Autenticação
+
+| Método | Rota                 | Descrição           |
+| ------ | -------------------- | ------------------- |
+| POST   | `/api/auth/register` | Cadastra um usuário |
+| POST   | `/api/auth/login`    | Realiza login       |
+
+As rotas de autenticação são públicas.
+
+Após o login, o token retornado deve ser utilizado nas rotas protegidas:
+
+```http
+Authorization: Bearer <token>
 ```
 
-Exemplo de CRUD de planos:
+### Usuários
 
-```text
-POST    /api/plans
-GET     /api/plans
-GET     /api/plans/:id
-PUT     /api/plans/:id
-DELETE  /api/plans/:id
-```
+| Método | Rota             | Descrição           |
+| ------ | ---------------- | ------------------- |
+| POST   | `/api/users`     | Cadastra um usuário |
+| GET    | `/api/users`     | Lista os usuários   |
+| PUT    | `/api/users/:id` | Atualiza um usuário |
+| DELETE | `/api/users/:id` | Remove um usuário   |
+
+### Planos
+
+| Método | Rota             | Descrição         |
+| ------ | ---------------- | ----------------- |
+| POST   | `/api/plans`     | Cadastra um plano |
+| GET    | `/api/plans`     | Lista os planos   |
+| GET    | `/api/plans/:id` | Busca um plano    |
+| PUT    | `/api/plans/:id` | Atualiza um plano |
+| DELETE | `/api/plans/:id` | Remove um plano   |
 
 ## Tecnologias
 
@@ -66,3 +78,5 @@ DELETE  /api/plans/:id
 * TypeScript
 * Prisma ORM
 * SQLite
+* JWT
+* bcrypt
